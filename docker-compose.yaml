@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+  test-web:
+    container_name: gg-task
+    build:
+      context: gg-task
+      dockerfile: Dockerfile
+    image: gg-task:latest
+    ports:
+      - '8080:8080'
