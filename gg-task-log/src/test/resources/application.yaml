@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: gg-task-log
+  datasource:
+    url: jdbc:h2:mem:log
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true
+  liquibase:
+    enabled: false

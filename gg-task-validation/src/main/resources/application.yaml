@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: gg-task-validation
+  main:
+    web-application-type: none
+
+axon:
+  axonserver:
+    servers: axonserver
+  serializer:
+    general: jackson
+    event: jackson
+    messages: jackson
+
+validation:
+  request-url: http://ip-api.com/json/
+  request-fields:
+    - status
+    - message
+    - countryCode
+    - isp
+  blocked-countries:
+    - CN # China
+    - ES # Spain
+    - US # USA
+  blocked-providers:
+    - Amazon    # Amazon.com, Inc.      # AWS
+    - Google    # Google LLC            # GCP
+    - Microsoft # Microsoft Corporation # Azure

@@ -3,4 +3,8 @@ plugins {
 }
 
 rootProject.name = 'GG'
-include 'gg-task'
+include 'gg-task-core'
+include 'gg-task-web'
+include 'gg-task-log'
+include 'gg-task-validation'
+include 'gg-task-convert'

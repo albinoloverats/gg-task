@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - preConditions:
+  - include:
+      relativeToChangelogFile: true
+      file: ./0001-log-table.yaml

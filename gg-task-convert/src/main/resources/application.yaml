@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: gg-task-convert
+
+axon:
+  axonserver:
+    servers: axonserver
+  serializer:
+    general: jackson
+    event: jackson
+    messages: jackson
+
+convert:
+  entry-record-delimiter: |
+  data-validation-enabled: true

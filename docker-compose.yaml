@@ -1,10 +1,70 @@
 version: '3.3'
 services:
-  test-web:
-    container_name: gg-task
+  axonserver:
+    image: axoniq/axonserver:latest
+    hostname: axonserver
+    networks:
+      - gg-task-default
+    environment:
+      - AXONIQ_AXONSERVER_STANDALONE=true
+
+  database:
+    image: mariadb
+    hostname: database
+    restart: always
+    networks:
+      - gg-task-default
+    environment:
+      - MARIADB_ROOT_PASSWORD=root
+    volumes:
+      - ./docker/database:/docker-entrypoint-initdb.d
+
+  gg-task-log:
+    container_name: gg-task-log
     build:
-      context: gg-task
+      context: gg-task-log
       dockerfile: Dockerfile
-    image: gg-task:latest
+    image: gg-task-log:latest
+    networks:
+      - gg-task-default
+    depends_on:
+      - axonserver
+      - database
+
+  gg-task-validation:
+    container_name: gg-task-validation
+    build:
+      context: gg-task-validation
+      dockerfile: Dockerfile
+    image: gg-task-validation:latest
+    networks:
+      - gg-task-default
+    depends_on:
+      - axonserver
+
+  gg-task-convert:
+    container_name: gg-task-convert
+    build:
+      context: gg-task-convert
+      dockerfile: Dockerfile
+    image: gg-task-convert:latest
+    networks:
+      - gg-task-default
+    depends_on:
+      - axonserver
+
+  gg-task-web:
+    container_name: gg-task-web
+    build:
+      context: gg-task-web
+      dockerfile: Dockerfile
+    image: gg-task-web:latest
     ports:
       - '8080:8080'
+    networks:
+      - gg-task-default
+    depends_on:
+      - axonserver
+
+networks:
+  gg-task-default:

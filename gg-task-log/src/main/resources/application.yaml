@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: gg-task-log
+  datasource:
+    url: jdbc:mariadb://database/gg_task_log
+    username: root
+    password: root
+    driverClassName: org.mariadb.jdbc.Driver
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/0000-master.yaml
+
+axon:
+  axonserver:
+    servers: axonserver
+  serializer:
+    general: jackson
+    event: jackson
+    messages: jackson

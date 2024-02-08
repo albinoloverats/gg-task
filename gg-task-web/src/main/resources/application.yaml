@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: gg-task-web
+
+axon:
+  axonserver:
+    servers: axonserver
+  serializer:
+    general: jackson
+    event: jackson
+    messages: jackson
+
+web:
+  ip-validation-enabled: true

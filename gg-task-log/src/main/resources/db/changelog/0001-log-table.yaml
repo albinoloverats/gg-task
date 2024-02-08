@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0001-log-table
+      author: ashley
+      changes:
+        - createTable:
+            tableName: log_event
+            columns:
+              - column:
+                  name: request_id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: request_uri
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: validation_uri
+                  type: varchar(255)
+              - column:
+                  name: request_timestamp
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: response_status
+                  type: integer
+              - column:
+                  name: request_ip_address
+                  type: varchar(16)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: request_country_code
+                  type: varchar(2)
+              - column:
+                  name: request_ip_provider
+                  type: varchar(255)
+              - column:
+                  name: time_lapsed
+                  type: bigint
