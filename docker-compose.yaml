@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-  test-web:
+  gg-task:
     container_name: gg-task
     build:
       context: gg-task
